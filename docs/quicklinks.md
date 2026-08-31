@@ -25,6 +25,10 @@ layout: post
     <td><span class="attendee-id-container">wxcclabs+supvr_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+supvr_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy"></span></span></td>
   </tr>
   <tr>
+    <td style="background-color: #d9edf7; font-weight: bold; color: black;">Password</td>
+    <td></td>
+  </tr>
+  <tr>
     <td style="background-color: #d9edf7; font-weight: bold; color: black;">EntryPoint/Channel Name</td>
     <td><span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Channel">Your_Attendee_ID</span>_Channel<span class="copy"></span></span></td>
   </tr>
