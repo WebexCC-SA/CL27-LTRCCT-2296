@@ -1,9 +1,8 @@
 ---
-site_name: LTRCCT-2296 From Good to Great: Enhancing Customer Experience with the Webex Contact Center Flow Designer
-site_description: LTRCCT-2296 From Good to Great: Enhancing Customer Experience with the Webex Contact Center Flow Designer
+site_name: "LTRCCT-2296 From Good to Great: Enhancing Customer Experience with the Webex Contact Center Flow Designer"
+site_description: "LTRCCT-2296 From Good to Great: Enhancing Customer Experience with the Webex Contact Center Flow Designer"
 # This is the home page text https://webexcc-sa.github.io/TS-2026/
 site_author: Yaroslav Bondar, Yurii Ulianov
-site_name: LTRCCT-2296 From Good to Great: Enhancing Customer Experience with the Webex Contact Center Flow Designer
 # must be same as "site_name"
 copyright: Copyright &copy; 2027 Cisco Systems Inc. All Rights Reserved.
 theme:
