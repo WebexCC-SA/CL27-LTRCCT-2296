@@ -3,10 +3,10 @@
 icon: material/bullseye-arrow
 ---
 <script>
-    // Look up and store the password that belongs to an attendee ID.
+    // Look up and store the credentials that belong to an attendee ID.
     // MkDocs publishes pwd.md as /advanced/pwd/, so read the generated page
     // instead of attempting to access the source Markdown file directly.
-    async function storeAttendeePassword(attendeeID) {
+    async function storeAttendeeCredentials(attendeeID) {
         const mkdocsConfig = document.getElementById('__config');
         const basePath = mkdocsConfig ? JSON.parse(mkdocsConfig.textContent).base : '../..';
         const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
@@ -19,15 +19,17 @@ icon: material/bullseye-arrow
 
         const passwordPage = new DOMParser().parseFromString(await response.text(), 'text/html');
         const passwordList = passwordPage.querySelector('.md-content__inner')?.textContent || '';
-        const passwordMatch = Array.from(passwordList.matchAll(/^\s*(\d{3})\s+(\S+)\s*$/gm))
+        const passwordMatch = Array.from(passwordList.matchAll(/^\s*(\d{3})\s+(\S+)\s+(\+\d+)\s*$/gm))
             .find(([, listedAttendeeID]) => listedAttendeeID === attendeeID);
 
         if (!passwordMatch) {
             localStorage.removeItem('attendeePassword');
-            throw new Error(`No password was found for attendee ID ${attendeeID}.`);
+            localStorage.removeItem('attendeeDialedNumber');
+            throw new Error(`No credentials were found for attendee ID ${attendeeID}.`);
         }
 
         localStorage.setItem('attendeePassword', passwordMatch[2]);
+        localStorage.setItem('attendeeDialedNumber', passwordMatch[3]);
     }
 
     // Function to initialize and handle form submission
@@ -41,7 +43,7 @@ icon: material/bullseye-arrow
         if (storedAttendeeID) {
             attendeeInput.value = storedAttendeeID;
             displayAttendee.textContent = storedAttendeeID;
-            storeAttendeePassword(storedAttendeeID).catch(console.error);
+            storeAttendeeCredentials(storedAttendeeID).catch(console.error);
         }
 
         // Restrict input to only allow three digits
@@ -61,8 +63,8 @@ icon: material/bullseye-arrow
                 // Update the displayed Attendee ID
                 displayAttendee.textContent = attendeeIDInput;
 
-                // Store the corresponding password for display in Quick Links.
-                await storeAttendeePassword(attendeeIDInput).catch(function(error) {
+                // Store the corresponding password and dialed number for Credentials.
+                await storeAttendeeCredentials(attendeeIDInput).catch(function(error) {
                     alert(error.message);
                 });
             } else {
