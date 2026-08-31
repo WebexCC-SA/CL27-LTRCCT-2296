@@ -26,7 +26,7 @@ layout: post
   </tr>
   <tr>
     <td style="background-color: #d9edf7; font-weight: bold; color: black;">Password</td>
-    <td></td>
+    <td><span class="attendee-password-container"><span id="attendee-password">Set your Attendee ID first</span><span class="copy" title="Click to copy!"></span></span></td>
   </tr>
   <tr>
     <td style="background-color: #d9edf7; font-weight: bold; color: black;">EntryPoint/Channel Name</td>
