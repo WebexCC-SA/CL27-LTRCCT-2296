@@ -2,9 +2,9 @@
 #icon: material/numeric-4-box-multiple
 icon: material/folder-open-outline
 
-title: Admin Flow Experience
-author: Dimitri Bokatov
-date: 2024-10-02
+title: LTRCCT-2296
+author: Yaroslav Bondar
+date: 2026-08-31
 layout: post
 ---
 
