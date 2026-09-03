@@ -1,1 +1,1 @@
-# CL25s TEST 
+# CL27 Lab Guide
