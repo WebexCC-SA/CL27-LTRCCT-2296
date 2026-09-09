@@ -135,7 +135,7 @@ icon: material/bullseye-arrow
 
 ## Learning Objectives
 
-Welcome to **"Partner Technical Summit Lab"**.
+Welcome to **"Partner Technical Summit Lab"**!
 
 This advanced lab is designed to empower you with the skills to craft exceptional customer journeys using the **Webex Contact Center Flow Designer and AI features**. During this lab, you’ll get hands-on experience with features and integrations designed to bring more intelligence and efficiency to every interaction. Take your time to explore and complete each step — you have **2 weeks of pod access**.</br>
 
