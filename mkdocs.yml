@@ -165,21 +165,13 @@ nav:
             - "Lab overview": ./main/AI_Lab_Suggested_Responses_Overview.md
             - "Mission 1: Configure Real-Time Assist in Knowledge Base": ./main/AI_Lab_Suggested_Responseds_Mission1.md
             - "Mission 2: Configure Fulfillment Flow ": ./main/AI_Lab_Suggested_Responseds_Mission2.md
-##      - Topic Analytics:
-##            - "Lab overview": ./main/AI_Lab_Topic_Overview.md
-##            - "Mission 1: Explore Topic Analytics": ./main/AI_Lab_Topic_Mission1.md
-##            - "(Read Only) Mission 2: Explore Real-Time Topic Analytics": ./main/AI_Lab_Real_Time_Topic_Mission1.md 
       - Conclusion: ./main/AI_Lab_Assistant_Conclusion.md
-  - AI QM TRACK:
-      - Quality Managment:
+  - ADVANCED TRACK:
+      - Custom Tasks and Channels:
             - "Lab overview": ./main/AI_Lab_QM_Overview.md
-            - "Mission 1: Webex AI Quality Management": ./main/AI_Lab_QM_Mission1.md
+            - "Mission 1: Work Items": ./main/ADV_Lab_Work_Item.md
+            - "Mission 2: Bring your own channel (BYOC)": ./main/ADV_Lab_BYOC.md
       - Conclusion: ./main/AI_Lab_QM_Conclusion.md
-  - FINAL CHALLENGE:
-      - Troubleshooting Mission:
-            - "Final Challenge: Production flow is failing!": ./main/FinalBossFight_Mission.md
-###            - "Hint for Final Challenge Mission!": ./main/FinalBossFight_Hint1.md
-###            - "Solution Guidance for Final Challenge Fight Mission!": ./main/FinalBossFight_Solution.md
   - Credentials: Credentials.md
 ###  - Ask a Question<i class="fa-solid fa-hand" style="color:#63E6BE;"></i>: slido-QA-iFrame.md
 
