@@ -165,6 +165,10 @@ nav:
             - "Lab overview": ./main/AI_Lab_Suggested_Responses_Overview.md
             - "Mission 1: Configure Real-Time Assist in Knowledge Base": ./main/AI_Lab_Suggested_Responseds_Mission1.md
             - "Mission 2: Configure Fulfillment Flow ": ./main/AI_Lab_Suggested_Responseds_Mission2.md
+      - Topic Analytics:
+            - "Lab overview": ./main/AI_Lab_Topic_Overview.md
+##            - "Mission 1: Explore Topic Analytics": ./main/AI_Lab_Topic_Mission1.md
+##            - "(Read Only) Mission 2: Explore Real-Time Topic Analytics": ./main/AI_Lab_Real_Time_Topic_Mission1.md 
       - Conclusion: ./main/AI_Lab_Assistant_Conclusion.md
   - ADVANCED TRACK:
       - Custom Tasks and Channels:
