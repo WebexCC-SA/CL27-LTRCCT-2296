@@ -102,6 +102,7 @@ nav:
       - Getting to know your environment: ./main/PreRequisites.md
 ###      - Chrome and Webex App Setup: ./main/Browser_and_Desktop_Setup.md 
       - Choose Your Adventure: ./main/Choose_Your_Adventure.md
+      - Codex Setup: ./main/CodexAPISetup.md
       ## - Flow Designer Overview [To be moved to presentation]: ./main/FlowDesignerOverview.md
   - CORE TRACK:
       - Lab Guide:
