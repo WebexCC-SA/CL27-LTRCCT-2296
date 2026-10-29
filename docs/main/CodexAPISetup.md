@@ -39,6 +39,7 @@ Var value: ***Your ordinary OpenRouter API key***
     enabled = true
     url = "https://agentic-server-platform.produs1.ciscoccservice.com/mcp/webex-contactcenter"
     http_headers = {"Authorization" = "Bearer  [YOUR_TOKEN_FROM_WXCC_DEV_PORTAL] "}
-        ```
+    ```
+
 ---
 
