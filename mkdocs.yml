@@ -173,10 +173,16 @@ nav:
       - Conclusion: ./main/AI_Lab_Assistant_Conclusion.md
   - ADVANCED TRACK:
       - Custom Tasks and Channels:
-            - "Lab overview": ./main/AI_Lab_QM_Overview.md
-            - "Mission 1: Work Items": ./main/ADV_Lab_Work_Item.md
-            - "Mission 2: Bring your own channel (BYOC)": ./main/ADV_Lab_BYOC.md
-      - Conclusion: ./main/AI_Lab_QM_Conclusion.md
+            - "Lab overview": ./main/Adv_Lab_Overview.md
+            - "Mission 1: Work Items": ./main/Avd_Lab_Work_Item.md
+            - "Mission 2: Bring your own channel (BYOC)": ./main/Adv_Lab_BYOC.md
+      - Conclusion: ./main/Adv_Lab_Conclusion.md
+  - DIGITAL CHANNEL TRACK:
+      - Custom Tasks and Channels:
+            - "Lab overview": ./main/Digital_Lab_Overview.md
+            - "Mission 1: Native Livechat": ./main/Digital_Lab_Chat.md
+            - "Mission 2: Native SMS": ./main/Digital_SMS_Chat.md
+      - Conclusion: ./main/Digital_Lab_Conclusion.md
   - Credentials: Credentials.md
 ###  - Ask a Question<i class="fa-solid fa-hand" style="color:#63E6BE;"></i>: slido-QA-iFrame.md
 
