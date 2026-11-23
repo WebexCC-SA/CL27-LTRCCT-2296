@@ -180,8 +180,8 @@ nav:
   - DIGITAL CHANNEL TRACK:
       - Custom Tasks and Channels:
             - "Lab overview": ./main/Digital_Lab_Overview.md
-            - "Mission 1: Native Livechat": ./main/Digital_Lab_Chat.md
-            - "Mission 2: Native SMS": ./main/Digital_SMS_Chat.md
+            - "Mission 1: Native Web chat channel": ./main/Digital_Lab_Chat.md
+            - "Mission 2: Native SMS channel": ./main/Digital_Lab_Chat.md
       - Conclusion: ./main/Digital_Lab_Conclusion.md
   - Credentials: Credentials.md
 ###  - Ask a Question<i class="fa-solid fa-hand" style="color:#63E6BE;"></i>: slido-QA-iFrame.md
