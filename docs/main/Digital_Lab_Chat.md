@@ -4,13 +4,15 @@ icon: material/medal
 ---
 
 ## Story
-Imagine calling a contact center, seeking quick, personalized help. Behind the scenes, a flow smoothly routes your call based on your needs.
+The chat channel gives customers a convenient way to contact Webex Contact Center through a chat widget on a website. They can connect with an agent without making a phone call and share information using rich message formats such as text, forms, carousels, and quick replies. These options help customers get support in a way that suits their needs and make it easier to provide the right information.
+
+For administrators, the unified flow designer makes chat flows easier to build, manage, and troubleshoot. Its flexible messaging options help administrators tailor each flow to the needs of their business and its customers.
 
 ### Call Flow Overview
 1. A new chat request is initiated by the customer and enters the flow.
 2. The flow sends a special pre-chat form to the customer asking about their contact details and request topic. *(These details ensure the agent will receive proper information about the customer.)*
-3. The customer fills in and submit the pre-chat form.
-4. The flow extracts the data from the form, prepare customer contact data for the agent, determines destination queue and route the request to it for further assistance.
+3. The customer fills in and submits the pre-chat form.
+4. The flow extracts the data from the form, prepares customer contact data for the agent, and routes the request to the queue for further assistance.
 
 ### Mission Details
 
@@ -21,20 +23,15 @@ Your mission is to:
 3. Set up chat request routing depending on the topic. </br>
 4. Test message exchange between the customer and the agent. </br>
 
-Flow Templates are designed to empower developers, speed up the development lifecycle, and maintain high-quality standards across flows, making them a core asset in Webex Contact Center flow design.
-
-</details>
----
-
 ### Build
 
-1. Login into [Webex Control Hub](https://admin.webex.com){:target="_blank"} by using your Admin profile. 
-   Your login will be of the format **<span class="attendee-id-container">wxcclabs+admin_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+admin_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy" title="Click to copy!"></span></span>**. You will see another login screen with Webex logo on it where you may need to enter the email address again and the password provided to you.
+1. Log in to [Collaboration Control Hub](https://admin.webex.com){:target="_blank"} by using your Admin profile. 
+   Your login will be of the format **<span class="attendee-id-container">wxcclabs+admin_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+admin_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy" title="Click to copy!"></span></span>**. You will see another login screen with the Webex logo on it where you may need to enter the email address again and the password provided to you.
 
     ![profiles](../graphics/Lab1/L1M1_Admin_Login.gif)
 
     !!! Note
-        Remember to take up the offer from Chrome to save your password
+        Remember to take up the offer from Chrome to save your password.
 
 2. Click on the **Contact Center** item under the **SERVICES** section on the left pane.
 
@@ -45,8 +42,8 @@ Flow Templates are designed to empower developers, speed up the development life
 5. Name your flow as <span class="attendee-id-container">**Chat_Flow_<span class="attendee-id-placeholder" data-prefix="Chat_Flow_">Your_Attendee_ID</span><span class="copy" title="Click to copy!"></span></span>** Then select **Chat (web & mobile)** as a channel type and click on **Create Flow**. The new flow with the only **Start Flow** node on the flow canvas will be created.
 
     !!! Note
-        **Edit** toggle at the top center of the page should be set to **On** when you create a new flow. If the toggle value is **Edit: Off**, switch it to **Edit: On**.
-        **Autosave** toggle at the bottom right of the page should be also turned on. If it is off, turn it on.
+        - **Edit** toggle at the top center of the page should be turned on when you create a new flow. If the toggle is off, switch it to on.
+        - **Autosave** toggle at the bottom right of the page should also be turned on. If it is off, turn it on.
 
 6.  Click on any empty point at the flow canvas to see **Global flow properties** tab on the right-hand side. Then go to that pane, scroll down to the **Configuration - Flow Variables** and create the following variables by pressing **Create flow variable** button:
 
@@ -115,7 +112,7 @@ Flow Templates are designed to empower developers, speed up the development life
 
     > - Activity label: **ReceiveFrom**
     >
-    >  **Channel details** section:
+    > **Channel details** section:
     >
     > - Channel type: **Chat**
     >
@@ -184,10 +181,10 @@ Flow Templates are designed to empower developers, speed up the development life
     >
     > - **Static queue**
     >
-    > - Queue: **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Queue">Your_Attendee_ID</span>_Chat_Queue<span class="copy" title="Click to copy!"></span></span>** from the dropdown list
+    > - Queue: **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Queue">Your_Attendee_ID</span>_Chat_Queue<span class="copy" title="Click to copy!"></span></span>** from the drop-down list
     >
     >    !!! Note
-             As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change them at current step.
+             As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change them at this step.
     >
     > Connect **all** outputs of **SendSuccessResponse** and **SendErrorResponse** nodes to this node.
 
@@ -202,15 +199,23 @@ Flow Templates are designed to empower developers, speed up the development life
     >
     > - In the pop-up window, ensure that the **Latest** label is selected in the **Add Version Label(s)** list, then click **Publish Flow**.
 
+16. Return to the **Contact Center** on Collaboration Control Hub. Go to **Entry Points**, search for your channel **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Channel">Your_Attendee_ID</span>_Chat_Channel<span class="copy" title="Click to copy!"></span></span>** and click on it.
+
+17. In **Entry Point** settings section change the following, then click **Save** button:
+
+    > - Chat routing flow: **Chat_Flow_<span class="attendee-id-placeholder">Your_Attendee_ID</span>**
+    >
+    > - Version label: **Latest**
+
 ## Testing
     
-1. Make sure you're logged into the Webex CC agent desktop as an Agent and set the status as **Available** for all channels.
+1. Make sure you're logged in to the Webex CC agent desktop as an Agent and set the status as **Available** for all channels.
 
-2. Navigate to the **Contact Center** on Control Hub. Then click **Assets** under the **DIGITAL SETTINGS** on the left pane and find your web chat asset **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Asset">Your_Attendee_ID</span>_Chat_Asset<span class="copy" title="Click to copy!"></span></span>**.
+2. Navigate to the **Contact Center** on Collaboration Control Hub. Then click **Assets** under the **DIGITAL SETTINGS** on the left pane and find your web chat asset **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Asset">Your_Attendee_ID</span>_Chat_Asset<span class="copy" title="Click to copy!"></span></span>**.
 
-3. Click on the chat asset you found, go to **Installation** tab and press **Copy** button under the **Installation Script** field to copy the script into a clipboard.
+3. Click on the chat asset you found, go to **Installation** tab and press **Copy** button under the **Installation Script** field to copy the script to the clipboard.
 
-4. Open new tab in your web browser and navigate to a [**Website Template**](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro){:target="_blank"}.
+4. Open a new tab in your web browser and navigate to a [**Website Template**](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro){:target="_blank"}.
 
 5. Paste the installation script you copied above between the paragraph closing HTML tag **'</p>'** and body closing tag **'</body>'** in the left window. Then press **Run >** button at the top of it and wait for a few seconds. Chat widget bubble will appear in the bottom right corner of the right window.
 
@@ -227,7 +232,7 @@ Flow Templates are designed to empower developers, speed up the development life
 
 8. Once the web form is completed, your chat request will be queued and then routed to the agent. Switch to the browser tab with the agent desktop and accept incoming chat request.
 
-9. Send messages from the customer to the agent and vice versa to make sure bidirectional message exchange works fine. Then end the chat in agent desktop.
+9. Send messages from the customer to the agent and vice versa to make sure bidirectional message exchange works correctly. Then end the chat in agent desktop and select any wrap-up value.
 
 ---
-<p style="text-align:center"><strong>Congratulations, you have succesfully completed Web Chat Channel mission! 🎉🎉 </strong></p>
+<p style="text-align:center"><strong>Congratulations, you have successfully completed Web Chat Channel mission! 🎉🎉 </strong></p>
