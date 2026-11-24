@@ -2,9 +2,11 @@
 
 ## Webex Contact Center Digital Channels Lab
 
-This lab demonstrates how to build and use digital channel flows in Flow Designer to provide seamless service experience for Webex Contact Center customers.
+Cisco is unifying Webex Contact Center flow designer by adding the possibility to create digital flows which were previously created in Webex Connect.
+In addition to voice flows, contact center administrator can currently build Web Chat and SMS digital flows in the enhanced flow designer. This lab demonstrates how to build and use those flows to provide unified flow management for the administrators and seamless service experience for the customers.
 
 ### Key Objectives
+
 
 - Build Web chat and SMS flows and test communication with the customer 
 - Provide agents with full context before and during live interactions
@@ -12,6 +14,6 @@ This lab demonstrates how to build and use digital channel flows in Flow Designe
 ### Benefits
 
 - Provide customer a flexibility of what type of channel to use when reaching out for help.
-- Simplify digital channel administration via unified Flow Designer.
+- Simplify digital channel administration via unified flow designer.
 
-By completing this lab, you'll learn how to enhance customer experiences using **Native Digital Channels** and **Unified Flow Designer**.
+By completing this lab, you'll learn how to enhance customer experiences using **Web Chat** and **SMS** digital channels in **Unified Flow Designer**.
