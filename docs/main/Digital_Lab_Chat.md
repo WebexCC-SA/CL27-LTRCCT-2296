@@ -8,7 +8,7 @@ Imagine calling a contact center, seeking quick, personalized help. Behind the s
 
 ### Call Flow Overview
 1. A new chat request is initiated by the customer and enters the flow.
-2. The flow sends a special pre-chat form to the customer asking about their contact details and request topic. *(This info defines further call processing logic and ensures the agent will receive proper information about the customer.)*
+2. The flow sends a special pre-chat form to the customer asking about their contact details and request topic. *(These details ensure the agent will receive proper information about the customer.)*
 3. The customer fills in and submit the pre-chat form.
 4. The flow extracts the data from the form, prepare customer contact data for the agent, determines destination queue and route the request to it for further assistance.
 
@@ -185,14 +185,49 @@ Flow Templates are designed to empower developers, speed up the development life
     > - **Static queue**
     >
     > - Queue: **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Queue">Your_Attendee_ID</span>_Chat_Queue<span class="copy" title="Click to copy!"></span></span>** from the dropdown list
-    
-    !!! Note
-        As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change them at current step.
+    >
+    >    !!! Note
+             As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change them at current step.
+    >
+    > Connect **all** outputs of **SendSuccessResponse** and **SendErrorResponse** nodes to this node.
 
-13. Validate and publish the flow:
+
+14. Add **End Flow** node and connect the output of **Queue Contact** node to this node.
+
+15. Validate and publish the flow:
 
     > - Enable the **Validation** toggle in the bottom right corner of the flow designer window to check for any potential flow errors and recommendations.
     >
     > - If there are no **Flow Errors** after validation is complete, click on **Publish Flow** next to it.
     >
-    > - In the pop-up window, ensure that the **Latest** label is selected in the **Add Version Label(s)** list, then click **Publish Flow**. 
+    > - In the pop-up window, ensure that the **Latest** label is selected in the **Add Version Label(s)** list, then click **Publish Flow**.
+
+## Testing
+    
+1. Make sure you're logged into the Webex CC agent desktop as an Agent and set the status as **Available** for all channels.
+
+2. Navigate to the **Contact Center** on Control Hub. Then click **Assets** under the **DIGITAL SETTINGS** on the left pane and find your web chat asset **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Asset">Your_Attendee_ID</span>_Chat_Asset<span class="copy" title="Click to copy!"></span></span>**.
+
+3. Click on the chat asset you found, go to **Installation** tab and press **Copy** button under the **Installation Script** field to copy the script into a clipboard.
+
+4. Open new tab in your web browser and navigate to a [**Website Template**](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro){:target="_blank"}.
+
+5. Paste the installation script you copied above between the paragraph closing HTML tag **'</p>'** and body closing tag **'</body>'** in the left window. Then press **Run >** button at the top of it and wait for a few seconds. Chat widget bubble will appear in the bottom right corner of the right window.
+
+    !!! Note
+        If chat bubble did not appear, check and make sure the script is pasted to the proper place of the window on the left-hand side and press **Run >** button again. If this does not help, please ask lab proctor for assistance.
+
+6. Click on the chat bubble to open the widget and press **Start Chat** button there to initiate a chat.
+
+7. You should receive the web form asking you to provide Full Name, Email, and Request Topic (you need to select one of the pre-defined topics from the drop-down list) one-by-one.
+
+    !!! Note
+        - There is no need to provide your real name or email in the form. Feel free to enter fictitious data.
+        - Click on the **>** button next to the field after providing a value for it instead of pressing **Enter** on the keyboard.
+
+8. Once the web form is completed, your chat request will be queued and then routed to the agent. Switch to the browser tab with the agent desktop and accept incoming chat request.
+
+9. Send messages from the customer to the agent and vice versa to make sure bidirectional message exchange works fine. Then end the chat in agent desktop.
+
+---
+<p style="text-align:center"><strong>Congratulations, you have succesfully completed Web Chat Channel mission! 🎉🎉 </strong></p>
