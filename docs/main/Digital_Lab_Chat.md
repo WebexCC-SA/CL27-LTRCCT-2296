@@ -180,6 +180,14 @@ Flow Templates are designed to empower developers, speed up the development life
 
 13. Add **Queue Contact** node to the flow and configure it in the following way:
 
+    > - Channel type: **Chat**
+    >
+    > - **Static queue**
+    >
+    > - Queue: **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Queue">Your_Attendee_ID</span>_Chat_Queue<span class="copy" title="Click to copy!"></span></span>** from the dropdown list
+    
+    !!! Note
+        As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change them at current step.
 
 13. Validate and publish the flow:
 
