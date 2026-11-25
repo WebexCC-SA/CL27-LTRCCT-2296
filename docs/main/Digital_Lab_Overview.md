@@ -7,7 +7,6 @@ In addition to voice flows, contact center administrator can currently build Web
 
 ### Key Objectives
 
-
 - Build Web chat and SMS flows and test communication with the customer 
 - Provide agents with full context before and during live interactions
 
