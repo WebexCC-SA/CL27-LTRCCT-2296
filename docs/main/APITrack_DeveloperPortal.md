@@ -35,7 +35,7 @@ Webex Contact Center APIs enable automation, customization, and integration with
 
 
 ## Mission Details
-In this mission, attendees will learn how to interact with Webex Contact Center APIs by performing API calls via the  [**Developer Portal**](https://developer.webex.com/){:target="_blank"}. Specifically, we will work with the Address Book feature.
+In this mission, attendees will learn how to interact with Webex Contact Center APIs by performing API calls via the [**Developer Portal**](https://developer.webex.com/){:target="_blank"}. Specifically, we will work with the Address Book feature.
 
 **<details><summary>Good to Know <span style="color: orange;">[Optional]</span></summary>**
 
