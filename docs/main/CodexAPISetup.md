@@ -10,36 +10,29 @@ icon: material/bullseye-arrow
    rundll32 sysdm.cpl,EditEnvironmentVariables
    ```
 
-2. Click **New**, in **User variables** section, 
-Var name: OPENROUTER_API_KEY
-Var value: ***Your ordinary OpenRouter API key*** 
+2. Click **New**, in **User variables** section. <br>
+    - Var name: **OPENROUTER_API_KEY**
+    - Var value: ***PASTE_YOUR_API_KEY_HERE*** 
 
 *** no Bearer prefix.
 
+![profiles](../graphics/overview/Env_Vars.jpg)
+    
 ### Configure the Codex provider
 
 1. Back up existing **%USERPROFILE%\.codex\config.toml**. 
 
-2. In **config.toml** add the following on top before the first [section] header.
+2. In **config.toml** add the following on top before the first [section] header. Copy and paste the following into line 2. Then save and close the file.
 
     ```toml
-    model = "openai/gpt-5.4-mini"
-    model_provider = "openrouter"
+    # Place this at the top level, before any [section].
+    model_provider = "openai_api"
     
-    [model_providers.openrouter]
-    name = "OpenRouter"
-    base_url = "https://openrouter.ai/api/v1"
-    env_key = "OPENROUTER_API_KEY"
+    [model_providers.openai_api]
+    name = "OpenAI API"
+    base_url = "https://api.openai.com/v1"
+    env_key = "OPENAI_API_KEY"
     wire_api = "responses"
     ```
-3. In the same **config.toml** add the following at the bottom.
-
-    ```toml
-    [mcp_servers.wxcc]
-    enabled = true
-    url = "https://agentic-server-platform.produs1.ciscoccservice.com/mcp/webex-contactcenter"
-    http_headers = {"Authorization" = "Bearer  [YOUR_TOKEN_FROM_WXCC_DEV_PORTAL] "}
-    ```
-
 ---
 
