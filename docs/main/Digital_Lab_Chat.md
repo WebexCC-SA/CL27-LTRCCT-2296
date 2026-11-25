@@ -20,8 +20,7 @@ Your mission is to:
 
 1. Build a web chat flow in the unified Flow Designer. </br>
 2. Create a pre-chat form. </br>
-3. Set up chat request routing depending on the topic. </br>
-4. Test message exchange between the customer and the agent. </br>
+3. Test message exchange between the customer and the agent. </br>
 
 ### Build
 
@@ -39,7 +38,7 @@ Your mission is to:
 
 4. New **Flow creation** tab will be opened. Select **Flow** and **Start from scratch** in that tab and press **Next**.
 
-5. Name your flow as <span class="attendee-id-container">**Chat_Flow_<span class="attendee-id-placeholder" data-prefix="Chat_Flow_">Your_Attendee_ID</span><span class="copy" title="Click to copy!"></span></span>** Then select **Chat (web & mobile)** as a channel type and click on **Create Flow**. The new flow with the only **Start Flow** node on the flow canvas will be created.
+5. On the **Flow confiduration** tab name your flow as <span class="attendee-id-container">**Chat_Flow_<span class="attendee-id-placeholder" data-prefix="Chat_Flow_">Your_Attendee_ID</span><span class="copy" title="Click to copy!"></span></span>** Then select **Chat (web & mobile)** as a channel type and click on **Create Flow**. The new flow with the only **Start Flow** node on the flow canvas will be created.
 
     !!! Note
         - **Edit** toggle at the top center of the page should be turned on when you create a new flow. If the toggle is off, switch it to on.
