@@ -2,7 +2,7 @@
 #icon: material/folder-open-outline
 icon: material/bullseye-arrow
 ---
-### Add the OpenRouter key manually in Windows
+### Add the OpenAI API key manually in Windows
 
 1. Press **Win+R**, enter the following, and press Enter:
 
@@ -11,7 +11,7 @@ icon: material/bullseye-arrow
    ```
 
 2. Click **New**, in **User variables** section. <br>
-    - Var name: **OPENROUTER_API_KEY**
+    - Var name: **OPENAI_API_KEY**
     - Var value: ***PASTE_YOUR_API_KEY_HERE*** 
 
 *** no Bearer prefix.
