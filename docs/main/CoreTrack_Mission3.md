@@ -72,7 +72,7 @@ Your mission is to:
     >
     > - Select the Connector: **Cisco Cloud Text-to-Speech**
     >
-    > - Click the **Add Text-to-Speech Message** button and paste text: ***It's not working hours currently. Please call later. Goodbye.***<span class="copy-static" title="Click to copy!"data-copy-text="It's not working hours currently. Please call later. Goodbye."><span class="copy"></span></span>
+    > - Click the **Add Text-to-Speech Message** button and paste text: **It's not working hours currently. Please call later. Goodbye.**<span class="copy-static" title="Click to copy!"data-copy-text="It's not working hours currently. Please call later. Goodbye."><span class="copy"></span></span>
     >
     > - Delete the selection for Audio File
 

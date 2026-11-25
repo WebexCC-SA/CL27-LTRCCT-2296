@@ -34,61 +34,134 @@ Your mission is to:
 3. Let's subscribe your Webhook URL to receive Webex Contact Center **events** via API. Go to the [Register Subscription](https://developer.webex.com/webex-contact-center/docs/api/v1/subscriptions/register-subscription){:target="_blank"} section of **Webex Contact Center Developer Portal**. Switch to **Request Body (JSON)** tab in the window on the right-hand side, then copy the JSON body below, paste it there, scroll down and press **Run** button: 
 
     !!! Note
-        Please replace **[Your Attenee ID]** and **[Webhook URL from step 1]** parts in JSON body with the proper values before executing API request.
+        Please replace **[Your Attendee ID]** and **[Webhook URL from step 1]** parts in JSON body with the proper values before executing API request.
 
     ``` JSON
     {
-        "name": "*[Your Attenee ID]-Event-Sub*",
+        "name": "[Your Attenee ID]-Event-Sub",
         "eventTypes": [
             "task:new",
             "task:failed",
 		    "task:connected",
 		    "task:ended"
         ],
-        "destinationUrl": "*[Webhook URL from step 1]*",
+        "destinationUrl": "[Webhook URL from step 1]",
+        "secret": "secret-string-to-sign-event-payloads",
+        "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+        "resourceVersion": "task:1.0.0"
+    }
+    ```
+    
+    Here is the example of **event subscription** JSON body for attendee **133** and webhook URL **https://usewebhook.com/ac52e535e67c204214ab31283faecbc9**:
+
+    ``` JSON
+    {
+        "name": "133-Event-Sub",
+        "eventTypes": [
+            "task:new",
+            "task:failed",
+            "task:connected",
+            "task:ended"
+        ],
+        "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
         "secret": "secret-string-to-sign-event-payloads",
         "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
         "resourceVersion": "task:1.0.0"
     }
     ```
 
-4. Make sure your **event** subscription has been sucessfully registered. Here is the example of successful API response:
+    Make sure your **event subscription** has been successfully registered. Here is the example of JSON body of successful API response (Response code - 201):
 
     ``` JSON
     {
-        "placeholder": "placeholder"
+        "meta": {
+            "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+            "subscriptionLimit": 20,
+            "subscriptionCount": 9
+        },
+        "data": {
+            "id": "d4a5713d-6b3f-45cc-b507-52ea15509da0",
+            "name": "133-Event-Sub",
+            "eventTypes": [
+                "task:failed",
+                "task:connected",
+                "task:ended",
+                "task:new"
+            ],
+            "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
+            "createdTime": 1795633055860,
+            "createdBy": "wxcclabs+admin_ID133@gmail.com",
+            "status": "active",
+            "lastUpdatedTime": 1795633055860,
+            "lastUpdatedBy": "wxcclabs+admin_ID133@gmail.com",
+            "resourceVersion": "task:1.0.0"
+        }
     }
     ```
 
-5. Let's now subscribe the same Webhook URL to receive Webex Contact Center **messages** via API. Go to the [Register Subscription](https://developer.webex.com/webex-contact-center/docs/api/v1/subscriptions/register-subscription){:target="_blank"} page again. Switch to **Request Body (JSON)** tab in the window on the right-hand side, then copy the JSON body below, paste it there, scroll down and press **Run** button: 
+4. Let's now subscribe the same Webhook URL to receive Webex Contact Center **messages** via API. Go to the [Register Subscription](https://developer.webex.com/webex-contact-center/docs/api/v1/subscriptions/register-subscription){:target="_blank"} page again. Switch to **Request Body (JSON)** tab in the window on the right-hand side, then copy the JSON body below, paste it there, scroll down and press **Run** button: 
 
     !!! Note
-        Please replace **[Your Attenee ID]** and **[Webhook URL from step 1]** parts in JSON body with the proper values before executing API request.
+        - Please replace **[Your Attendee ID]** and **[Webhook URL from step 1]** parts in JSON body with the proper values before executing API request.
 
     ``` JSON
     {
-        "name": "*[Your Attenee ID]-Event-Sub*",
+        "name": "[Your Attendee ID]-Message-Sub",
         "eventTypes": [
-            "task:new",
-            "task:failed",
-		    "task:connected",
-		    "task:ended"
+            "task-message:appended",
+            "task-message:append-failed"
         ],
-        "destinationUrl": "*[Webhook URL from step 1]*",
+        "destinationUrl": "[Webhook URL from step 1]",
         "secret": "secret-string-to-sign-event-payloads",
         "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
         "resourceVersion": "task:1.0.0"
     }
+    ```
 
-6. Make sure your **message** subscription has been sucessfully registered. Here is the example of successful API response:
+    Here is the example of **message subscription** JSON body for attendee **133** and webhook URL **https://usewebhook.com/ac52e535e67c204214ab31283faecbc9**:
 
     ``` JSON
     {
-        "placeholder": "placeholder"
+        "name": "133-Message-Sub",
+        "eventTypes": [
+            "task-message:appended",
+            "task-message:append-failed"
+        ],
+        "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
+        "secret": "secret-string-to-sign-event-payloads",
+        "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+        "resourceVersion": "task-message:1.0.0"
     }
     ```
 
-7. Open a new tab in your web browser and log in to [Collaboration Control Hub](https://admin.webex.com){:target="_blank"} by using your Admin profile. 
+    Make sure your **message subscription** has been successfully registered. Here is the example of JSON body of successful API response (Response code - 201):
+
+    ``` JSON
+    {
+        "meta": {
+            "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+            "subscriptionLimit": 20,
+            "subscriptionCount": 10
+        },
+        "data": {
+            "id": "a839417e-7766-47e3-929a-7ea994cd4781",
+            "name": "133-Message-Sub",
+            "eventTypes": [
+                "task-message:appended",
+                "task-message:append-failed"
+            ],
+            "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
+            "createdTime": 1795633733786,
+            "createdBy": "wxcclabs+admin_ID133@gmail.com",
+            "status": "active",
+            "lastUpdatedTime": 1795633733786,
+            "lastUpdatedBy": "wxcclabs+admin_ID133@gmail.com",
+            "resourceVersion": "task-message:1.0.0"
+        }
+    }
+    ```
+
+5. Open a new tab in your web browser and log in to [Collaboration Control Hub](https://admin.webex.com){:target="_blank"} by using your Admin profile. 
    Your login will be of the format **<span class="attendee-id-container">wxcclabs+admin_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+admin_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy" title="Click to copy!"></span></span>**.
 
     ![profiles](../graphics/Lab1/L1M1_Admin_Login.gif)
@@ -96,27 +169,139 @@ Your mission is to:
     !!! Note
         Remember to take up the offer from Chrome to save your password.
 
-8. Click on the **Contact Center** item under the **SERVICES** section on the left pane.
+6. Click on the **Contact Center** item under the **SERVICES** section on the left pane. Then go to **Assets** under **DIGITAL SETTINGS** section on the left. Click on **Custom messaging** tab at the top, search for your asset **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Asset">Your_Attendee_ID</span>_BYOC_Asset<span class="copy" title="Click to copy!"></span></span>** and click on it to go to the asset settings.
 
-9. 
+7. Set the following parameters in the **Webhook** section of asset settings and save changes:
 
+    > - Messaging webhook URL: *[Webhook URL from step 1]*
+    >
+    > - Messaging webhook secret: *secret-string-to-sign-event-payloads*<span class="copy-static" title="Click to copy!" data-copy-text="secret-string-to-sign-event-payloads"><span class="copy"></span></span>
 
-3. Navigate to **Flows** under **Customer Experience** section on the left, click on **Manage Flows** dropdown list on the top right and select **Create Flows**.
+8. Navigate to **Flows** under **Customer Experience** section on the left, click on **Manage Flows** dropdown list on the top right and select **Create Flows**.
 
-4. New **Flow creation** tab will be opened. Select **Flow** and **Start from scratch** in that tab and press **Next**.
+9. New **Flow creation** tab will be opened. Select **Flow** and **Start from scratch** in that tab and press **Next**.
 
-5. On the **Flow confiduration** tab name your flow as <span class="attendee-id-container">**BYOC_Flow_<span class="attendee-id-placeholder" data-prefix="BYOC_Flow_">Your_Attendee_ID</span><span class="copy" title="Click to copy!"></span></span>** Then select **Custom-Messaging-BYOC** as a channel type and click on **Create Flow**. The new flow with the only **Start Flow** node on the flow canvas will be created.
+10. On the **Flow confiduration** tab name your flow as <span class="attendee-id-container">**BYOC_Flow_<span class="attendee-id-placeholder" data-prefix="BYOC_Flow_">Your_Attendee_ID</span><span class="copy" title="Click to copy!"></span></span>** Then select **Custom-Messaging-BYOC** as a channel type and click on **Create Flow**. The new flow with the only **Start Flow** node on the flow canvas will be created.
 
     !!! Note
         - **Edit** toggle at the top center of the page should be turned on when you create a new flow. If the toggle is off, switch it to on.
         - **Autosave** toggle at the bottom right of the page should also be turned on. If it is off, turn it on.
 
-6.  Click on any empty point at the flow canvas to see **Global flow properties** tab on the right-hand side. Then go to that pane, scroll down to the **Configuration - Flow Variables** and create the following variables by pressing **Create flow variable** button:
+11.  Click on any empty point at the flow canvas to see **Global flow properties** tab on the right-hand side. Then go to that pane, scroll down to the **Configuration - Flow Variables** and create the following variables by pressing **Create flow variable** button:
 
     > - **name**: Variable type - **String**, Agent viewable - **On**, Desktop label - **Customer name**
     >
     > - **topic**: Variable type - **String**, Agent viewable - **On**, Desktop label - **Brief description**
 
-7. Scroll down and turn on **Enable decryption** toggle on the same **Global flow properties** tab.
+12. Scroll down and turn on **Enable decryption** toggle on the same **Global flow properties** tab.
 
-8. Add **Send Chat** node from the **Activities** pane on the left to the main flow canvas and set the following node settings:
+13. Add **Send Chat** node from the **Activities** pane on the left to the main flow canvas and set the following node settings:
+
+
+
+
+13. Add **Queue Contact** node to the flow and configure it in the following way:
+
+    > - Channel type: **Custom messaging**
+    >
+    > - **Static queue**
+    >
+    > - Queue: **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Queue">Your_Attendee_ID</span>_BYOC_Queue<span class="copy" title="Click to copy!"></span></span>** from the drop-down list
+    >
+    >    !!! Note
+             As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change them at this step.
+    >
+    > Connect **all** outputs of **SendResponse** node to this node.
+
+14. Add **End Flow** node and connect the output of **Queue Contact** node to this node.
+
+15. Validate and publish the flow:
+
+    > - Enable the **Validation** toggle in the bottom right corner of the flow designer window to check for any potential flow errors and recommendations.
+    >
+    > - If there are no **Flow Errors** after validation is complete, click on **Publish Flow** next to it.
+    >
+    > - In the pop-up window, ensure that the **Latest** label is selected in the **Add Version Label(s)** list, then click **Publish Flow**.
+
+16. Return to the **Contact Center** on Collaboration Control Hub. Go to **Entry Points**, search for your channel **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Channel">Your_Attendee_ID</span>_BYOC_Channel<span class="copy" title="Click to copy!"></span></span>** and click on it.
+
+17. In **Entry Point** settings section change the following, then click **Save** button:
+
+    > - Chat routing flow: **BYOC_Flow_<span class="attendee-id-placeholder">Your_Attendee_ID</span>**
+    >
+    > - Version label: **Latest**
+
+
+## Testing
+    
+1. Make sure you're logged in to the Webex CC agent desktop as an agent and set the status as **Available** for all channels.
+
+2. Navigate to [Create Task API](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/create-task){:target="_blank"} of **Webex Contact Center Developer Portal** and make sure you signed in with your Admin profile. Then switch to **Request Body (JSON)** tab in the window on the right-hand side.
+
+    !!! Note
+        As mentioned at the beginning of this mission, we will use **Create Task API** for two purposes:
+        - Initiate a new request via custom channel on behalf of customer and trigger Webex CC flow starting a conversation.
+        - Append message to the existing conversation on behalf of customer.
+        In other words, we will use **Create Task API** to simulate custom channel interface on customer's side. Like, if the end customer would send those messages via Instagram, Telegram, LinkedIn or any other application.
+
+3. Firstly, let's initiate a new request on behalf of the end customer to trigger Webex CC flow we created above. Copy the JSON body below, paste it to **Request Body (JSON)** tab, scroll down and press **Run** button:
+
+    !!! Note
+        Please replace the following parameters in JSON body below before executing API request
+        - *[The email from your Webex CC lab Admin account]* - **<span class="attendee-id-container">wxcclabs+admin_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+admin_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy"></span></span>**
+        - *[The name of your BOYC Entry Point]* - **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Channel">Your_Attendee_ID</span>_BYOC_Channel<span class="copy" title="Click to copy!"></span></span>**
+        - *[Current time in EPOCH format with milliseconds]* - use [Epoch Converter](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/create-task){:target="_blank"} to get the timestamp in the proper format. For example, 1795636326000
+
+    ``` JSON
+    {
+        "origin": {
+            "address": "email@example.com",
+            "name": "Customer Inc.",
+            "type": "customerAddress"
+        },
+        "destination": {
+            "address": "[The email from your Webex CC lab Admin account]",
+            "name": "Webex CC Inc.",
+            "type": "businessAddress"
+        },
+        "channelProperties": {
+            "channelType": "customMessaging",
+            "channel": "[The name of your BOYC Entry Point]",
+            "message": {
+                "direction": "inbound",
+                "type": "text",
+                "text": "Hello, I need help with my order.",
+                "timestampEpoch": "[Current time in EPOCH format with milliseconds]"
+            }
+        }
+    }
+    ```    
+
+4. Now, let's append an existing conversation with the new message on behalf of the end customer to route it to the queue and engage an agent. In order to do this, navigate to [Append Task Message API](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/append-task-message){:target="_blank"} of **Webex Contact Center Developer Portal** and switch to **Request Body (JSON)** tab in the window on the right-hand side. Then copy the JSON body below, paste it to **Request Body (JSON)** tab, scroll down and press **Run** button:
+
+    !!! Note
+        Please replace the following parameters in JSON body below before executing API request
+        - *[The name of your BOYC Entry Point]* - **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Channel">Your_Attendee_ID</span>_BYOC_Channel<span class="copy" title="Click to copy!"></span></span>**
+        - *[Current time in EPOCH format with milliseconds]* - use [Epoch Converter](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/create-task){:target="_blank"} to get the timestamp in the proper format. For example, 1795636326000
+
+    ``` JSON
+    {
+        "channelProperties": {
+            "channelType": "customMessaging",
+            "channel": "[The name of your BOYC Entry Point]",
+            "message": {
+                "direction": "inbound",
+                "type": "text",
+                "text": "My order number is 123456.",
+                "timestampEpoch": "[Current time in EPOCH format with milliseconds]"
+            }
+        }
+    }
+    ```
+
+5. Switch to the agent desktop browser tab and accept incoming request.
+
+6. Send messages from the customer to the agent (via **Append Task Message API**) and vice versa (from the agent desktop) to make sure bidirectional message exchange works correctly. Then end the conversation in **agent desktop**, select any value from the **Wrap Up Reasons** dropdown list on the right-hand side, and press the **Submit Wrap Up** button.
+
+---
+<p style="text-align:center"><strong>Congratulations, you have successfully completed Web Chat Channel mission! 🎉🎉 </strong></p>

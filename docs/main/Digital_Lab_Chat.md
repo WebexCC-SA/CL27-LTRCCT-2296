@@ -187,7 +187,6 @@ Your mission is to:
     >
     > Connect **all** outputs of **SendSuccessResponse** and **SendErrorResponse** nodes to this node.
 
-
 14. Add **End Flow** node and connect the output of **Queue Contact** node to this node.
 
 15. Validate and publish the flow:
@@ -208,7 +207,7 @@ Your mission is to:
 
 ## Testing
     
-1. Make sure you're logged in to the Webex CC agent desktop as an Agent and set the status as **Available** for all channels.
+1. Make sure you're logged in to the Webex CC agent desktop as an agent and set the status as **Available** for all channels.
 
 2. Navigate to the **Contact Center** on Collaboration Control Hub. Then click **Assets** under the **DIGITAL SETTINGS** on the left pane and find your web chat asset **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Asset">Your_Attendee_ID</span>_Chat_Asset<span class="copy" title="Click to copy!"></span></span>**.
 
@@ -231,7 +230,7 @@ Your mission is to:
 
 8. Once the web form is completed, your chat request will be queued and then routed to the agent. Switch to the browser tab with the agent desktop and accept incoming chat request.
 
-9. Send messages from the customer to the agent and vice versa to make sure bidirectional message exchange works correctly. Then end the chat in agent desktop and select any wrap-up value.
+9. Send messages from the customer to the agent and vice versa to make sure bidirectional message exchange works correctly. Then end the conversation in **agent desktop**, select any value from the **Wrap Up Reasons** dropdown list on the right-hand side, and press the **Submit Wrap Up** button.
 
 ---
 <p style="text-align:center"><strong>Congratulations, you have successfully completed Web Chat Channel mission! 🎉🎉 </strong></p>
