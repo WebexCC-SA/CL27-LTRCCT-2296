@@ -34,7 +34,7 @@ Var value: ***Your ordinary OpenRouter API key***
     ```
 3. Start **Windows PowerShell**, paste the following into **PowerShell** with replaced ***PASTE_YOUR_API_KEY_HERE***. Each worksation should have its own key. Keys can be found in **Lab-Assistant** portal
 
-    ```
+    ```toml
     & {
     $apiKey = 'PASTE_YOUR_API_KEY_HERE'
 
