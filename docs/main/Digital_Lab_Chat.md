@@ -70,8 +70,8 @@ Your mission is to:
             - **Request topic** [drop-down list]
             
             In this lab, once the customer initiates the chat, this will trigger the flow and **Send Chat** node will show them the form and ask to fill in those three fields one-by-one.
-    >
-    >   ``` JSON
+    
+        ``` JSON
         { 
             "reference": "contact-request", 
             "title": "Please provide the details", 
@@ -107,8 +107,8 @@ Your mission is to:
         ```
     >
     > - Append message to transcript: **Enabled**
-    >
-    > Connect **Start Chat** node output to this node.
+    
+    - Connect **Start Chat** node output to this node.
 
     !!! Note
         The JSON code above represents a simple web form with three fields:
