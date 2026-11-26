@@ -134,8 +134,7 @@ nav:
             - "Mission 5: Adding Personalized Callback": ./main/CallbackTrack_Mission5.md  
       - Conclusion: ./main/CallbackTrack_Conclusion.md
   - DIGITAL CHANNEL TRACK:
-      - Custom Tasks and Channels:
-            - "Lab overview": ./main/Digital_Lab_Overview.md
+      - Lab Guide:
             - "Mission 1: Web Chat Channel": ./main/Digital_Lab_Chat.md
             - "Mission 2: SMS Channel": ./main/Digital_Lab_SMS.md
             - "Mission 3: Bring Your Own Channel (BYOC)": ./main/Digital_Lab_BYOC.md

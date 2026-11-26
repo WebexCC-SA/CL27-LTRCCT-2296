@@ -7,10 +7,10 @@ icon: material/medal
 If the customer wants to use a custom channel, which is not supported by Webex Contact Center natively, they can integrate it with Webex CC using Bring Your Own Channel (BYOC) capability. Such integration significantly expands the amount of options available for end customers to contact companies, partners or service providers via Webex Contact Center through a variety of different digital channels, including social media and custom channels. This makes the entire communication much easier and convenient for the end customers regardless of what type of communication they prefer.
 
 ### Call Flow Overview
-1. Contact center administrator establishes integration with the external digital channel and subscribes it to receive messages and events from Webex CC.
-2. A new request is initiated by the customer and enters the flow.
-3. The flow interacts with the customer to gather the details necessary process the request.
-3. The flow extracts the data from customer responses, prepares necessary info for the agent, and routes the request to the queue for further assistance.
+1. Contact center administrator establishes integration with the external custom channel and subscribes it to receive messages and events from Webex CC.
+2. A new request is initiated by the end customer and triggers custom messaging flow.
+3. The flow interacts with the customer to gather the details necessary to process the request.
+4. The flow extracts the data from customer responses, prepares necessary info for the agent, and routes the request to the queue for further assistance.
 
 ### Mission Details
 
@@ -31,10 +31,13 @@ Your mission is to:
 2. Log in to [Webex Contact Center Developer Portal](https://developer.webex.com/webex-contact-center/docs/webex-contact-center){:target="_blank"} by using your Admin profile.
    Your login will be of the format **<span class="attendee-id-container">wxcclabs+admin_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+admin_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy" title="Click to copy!"></span></span>**. If you did not sign in to the Collaboration Control Hub or the other resource under the same admin account in the same web browser session yet, you will see another login screen with the Webex logo on it where you may need to enter the email address again and the password provided to you.
 
-3. Let's subscribe your Webhook URL to receive Webex Contact Center **events** via API. Go to the [Register Subscription](https://developer.webex.com/webex-contact-center/docs/api/v1/subscriptions/register-subscription){:target="_blank"} section of **Webex Contact Center Developer Portal**. Switch to **Request Body (JSON)** tab in the window on the right-hand side, then copy the JSON body below, paste it there, scroll down and press **Run** button: 
+3. Let's subscribe your Webhook URL to receive Webex Contact Center **events** via Subscriptions API. Go to the [Register Subscription](https://developer.webex.com/webex-contact-center/docs/api/v1/subscriptions/register-subscription){:target="_blank"} section of **Webex Contact Center Developer Portal**. Switch to **Request Body (JSON)** tab in the window on the right-hand side, then copy the JSON body below, paste it there, scroll down and press **Run** button: 
 
     !!! Note
-        Please replace **[Your Attendee ID]** and **[Webhook URL from step 1]** parts in JSON body with the proper values before executing API request.
+        Please replace the following parameters in JSON body below before executing API request:
+
+        - **[Your Attendee ID]** - **<span id="display-attendee">No ID stored</span>**
+        - **[Webhook URL from step 1]** - paste your Webhook URL
 
     ``` JSON
     {
@@ -99,10 +102,13 @@ Your mission is to:
     }
     ```
 
-4. Let's now subscribe the same Webhook URL to receive Webex Contact Center **messages** via API. Go to the [Register Subscription](https://developer.webex.com/webex-contact-center/docs/api/v1/subscriptions/register-subscription){:target="_blank"} page again. Switch to **Request Body (JSON)** tab in the window on the right-hand side, then copy the JSON body below, paste it there, scroll down and press **Run** button: 
+4. Let's now subscribe the same Webhook URL to receive Webex Contact Center **messages** via Subscriptions API. Go to the [Register Subscription](https://developer.webex.com/webex-contact-center/docs/api/v1/subscriptions/register-subscription){:target="_blank"} page again. Switch to **Request Body (JSON)** tab in the window on the right-hand side, then copy the JSON body below, paste it there, scroll down and press **Run** button: 
 
     !!! Note
-        - Please replace **[Your Attendee ID]** and **[Webhook URL from step 1]** parts in JSON body with the proper values before executing API request.
+        Please replace the following parameters in JSON body below before executing API request:
+
+        - **[Your Attendee ID]** - **<span id="display-attendee">No ID stored</span>**
+        - **[Webhook URL from step 1]** - paste your Webhook URL
 
     ``` JSON
     {
@@ -200,7 +206,7 @@ Your mission is to:
     > **Channel details** section:
     >
     > - Custom messaging channel: **Common_BYOC_Channel**
-    > <br/><br/>
+    >
     > **Message configuration** section:
     >
     > - Message type: **Text**
@@ -208,7 +214,7 @@ Your mission is to:
     > - Message text: **Hello, Please provide your order number.**
     >
     > - Append message to transcript: **Enabled**
-    > <br/><br/>
+    >
     > Connect **Start Flow** node output to this node.
 
 14. Add **Receive Message** node from the same **Activities** pane and set the following node settings:
@@ -224,23 +230,23 @@ Your mission is to:
     > - Wait before timing out: **600** seconds
     >
     > - Append message to transcript: **Enabled**
-    > <br/><br/>
-    >  **Parse settings** section (press **+ Add new** button to add a variable):
+    >
+    > **Parse settings** section (press **+ Add new** button to add a variable):
     >
     > - Flow variable: **order**
     >
     > - JSON path expression: **$.message.text**<span class="copy-static" data-copy-text="$.message.text"><span class="copy" title="Click to copy!"></span></span>
-    > <br/><br/>
+    >
     > Connect **SendHello** node output to this node.
 
 15. Add one more **Send Custom Message** node to the flow and set the following node settings:
 
     > - Activity label: **SendSuccessResponse**
-    > <br/><br/>
+    >
     > **Channel details** section:
     >
     > - Custom messaging channel: **Common_BYOC_Channel**
-    > <br/><br/>
+    >
     > **Message configuration** section:
     >
     > - Message type: **Text**
@@ -248,17 +254,17 @@ Your mission is to:
     > - Message text: **Thank you for providing the information. We appreciate your patience. One of our agents will join the chat shortly to assist you.**<span class="copy-static" data-copy-text="Thank you for providing the information. We appreciate your patience. One of our agents will join the chat shortly to assist you."><span class="copy" title="Click to copy!"></span></span>
     >
     > - Append message to transcript: **Enabled**
-    > <br/><br/>
+    > 
     > Connect **ReceiveOrder** node output to this node.
 
 16. Add one more **Send Custom Message** node to the flow and set the following node settings:
 
     > - Activity label: **SendErrorResponse**
-    > <br/><br/>
+    >
     > **Channel details** section:
     >
     > - Custom messaging channel: **Common_BYOC_Channel**
-    > <br/><br/>
+    >
     > **Message configuration** section:
     >
     > - Message type: **Text**
@@ -266,7 +272,7 @@ Your mission is to:
     > - Message text: **It looks like an issue may have occurred during the chat. One of our agents will join shortly to investigate and assist you. Thank you for your patience.**<span class="copy-static" data-copy-text="It looks like an issue may have occurred during the chat. One of our agents will join shortly to investigate and assist you. Thank you for your patience."><span class="copy" title="Click to copy!"></span></span>
     >
     > - Append message to transcript: **Enabled**
-    > <br/><br/>
+    >
     > Connect all **Timeout** and **Undefined Error** outputs of **SendHello** and **ReceiveOrder** nodes to this node.
 
 17. Add **Queue Contact** node to the flow and configure it in the following way:
@@ -277,10 +283,10 @@ Your mission is to:
     >
     > - Queue: **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Queue">Your_Attendee_ID</span>_BYOC_Queue<span class="copy" title="Click to copy!"></span></span>** from the drop-down list
     >
-    >    !!! Note
-             As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change them at this step.
-    > <br/><br/>
     > Connect **all** outputs of **SendSuccessResponse** and **SendErrorResponse** nodes to this node.
+
+    !!! Note
+        As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change any of them at this step.
 
 18. Add **End Flow** node and connect the output of **Queue Contact** node to this node.
 
@@ -300,7 +306,6 @@ Your mission is to:
     >
     > - Version label: **Latest**
 
-
 ## Testing
     
 1. Make sure you're logged in to the Webex CC agent desktop as an agent and set the status as **Available** for all channels.
@@ -309,17 +314,20 @@ Your mission is to:
 
     !!! Note
         As mentioned at the beginning of this mission, we will use **Create Task API** for two purposes:
+
         - Initiate a new request via custom channel on behalf of customer and trigger Webex CC flow starting a conversation.
         - Append message to the existing conversation on behalf of customer.
+        
         In other words, we will use **Create Task API** to simulate custom channel interface on customer's side. Like, if the end customer would send those messages via Instagram, Telegram, LinkedIn or any other application.
 
 3. Firstly, let's initiate a new request on behalf of the end customer to trigger Webex CC flow we created above. Copy the JSON body below, paste it to **Request Body (JSON)** tab, scroll down and press **Run** button. This will send a message **Hello, I need help with my order.** to Webex CC and call your flow. 
 
     !!! Note
-        Please replace the following parameters in JSON body below before executing API request
-        - *[The email from your Webex CC lab Admin account]* - **<span class="attendee-id-container">wxcclabs+admin_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+admin_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy"></span></span>**
-        - *[The name of your BOYC Entry Point]* - **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Channel">Your_Attendee_ID</span>_BYOC_Channel<span class="copy" title="Click to copy!"></span></span>**
-        - *[Current time in EPOCH format with milliseconds]* - use [Epoch Converter](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/create-task){:target="_blank"} to get the timestamp in the proper format. For example, 1795636326000
+        Please replace the following parameters in JSON body below before executing API request:
+
+        - **[The email from your Webex CC lab Admin account]** - **<span class="attendee-id-container">wxcclabs+admin_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+admin_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy"></span></span>**
+        - **[The name of your BOYC Entry Point]** - **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Channel">Your_Attendee_ID</span>_BYOC_Channel<span class="copy" title="Click to copy!"></span></span>**
+        - **[Current time in EPOCH format with milliseconds]** - use [Epoch Converter](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/create-task){:target="_blank"} to get the timestamp in the proper format. For example, 1795636326000
 
     ``` JSON
     {
@@ -346,7 +354,7 @@ Your mission is to:
     }
     ```    
 
-4. After your flow receives initial message, it will auto-reply with the message **Hello, Please provide your order number.** that we pre-configured creating the flow. Both messages will be sent to Webhook URL provided during subscription registration above. Therefore, switch to the Webhook website tab in your browser and make sure you see both messages there.
+4. After your flow receives initial message, it will auto-reply with the message **Hello, Please provide your order number.** that we preconfigured creating the flow. Both messages will be sent to Webhook URL provided during subscription registration above. Therefore, switch to the Webhook website tab in your browser and make sure you see both messages there.
 
 5. Now, let's append an existing conversation with the new message on behalf of the end customer to route it to the queue and engage an agent. We will reply with the text **123456** as an order number.
 
@@ -356,9 +364,10 @@ Your mission is to:
     In order to do this, navigate to [Append Task Message API](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/append-task-message){:target="_blank"} of **Webex Contact Center Developer Portal** and switch to **Request Body (JSON)** tab in the window on the right-hand side. Then copy the JSON body below, paste it to **Request Body (JSON)** tab, scroll down and press **Run** button:
 
     !!! Note
-        Please replace the following parameters in JSON body below before executing API request
-        - *[The name of your BOYC Entry Point]* - **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Channel">Your_Attendee_ID</span>_BYOC_Channel<span class="copy" title="Click to copy!"></span></span>**
-        - *[Current time in EPOCH format with milliseconds]* - use [Epoch Converter](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/create-task){:target="_blank"} to get the timestamp in the proper format. For example, 1795636326000
+        Please replace the following parameters in JSON body below before executing API request:
+
+        - **[The name of your BOYC Entry Point]** - **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Channel">Your_Attendee_ID</span>_BYOC_Channel<span class="copy" title="Click to copy!"></span></span>**
+        - **[Current time in EPOCH format with milliseconds]** - use [Epoch Converter](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/create-task){:target="_blank"} to get the timestamp in the proper format. For example, 1795636326000
 
     ``` JSON
     {

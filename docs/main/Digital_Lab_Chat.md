@@ -62,15 +62,6 @@ Your mission is to:
     >
     > - Form:
     >
-        !!! Note
-            The JSON code below represents a simple web form with three fields:
-
-            - **Full Name** [text]
-            - **Email** [text]
-            - **Request topic** [drop-down list]
-        
-            In this lab, once the customer initiates the chat, this will trigger the flow and **Send Chat** node will show them the form and ask to fill in those three fields one-by-one.
-    
         ``` JSON
         { 
             "reference": "contact-request", 
@@ -105,10 +96,6 @@ Your mission is to:
             ]
         }
         ```
-    >
-    > - Append message to transcript: **Enabled**
-    >
-    > Connect **Start Chat** node output to this node.
 
     !!! Note
         The JSON code above represents a simple web form with three fields:
@@ -118,6 +105,10 @@ Your mission is to:
         - **Request topic** [drop-down list]
         
         In this lab, once the customer initiates the chat, this will trigger the flow and **Send Chat** node will show them the form and ask to fill in those three fields one-by-one.
+    >
+    > - Append message to transcript: **Enabled**
+    >
+    > Connect **Start Chat** node output to this node.
 
 9. Add **Receive Message** node from the same **Activities** pane and set the following node settings:
 
@@ -194,10 +185,10 @@ Your mission is to:
     >
     > - Queue: **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_Chat_Queue">Your_Attendee_ID</span>_Chat_Queue<span class="copy" title="Click to copy!"></span></span>** from the drop-down list
     >
-    >    !!! Note
-             As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change them at this step.
-    >
     > Connect **all** outputs of **SendSuccessResponse** and **SendErrorResponse** nodes to this node.
+
+    !!! Note
+        As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change any of them at this step.
 
 14. Add **End Flow** node and connect the output of **Queue Contact** node to this node.
 
