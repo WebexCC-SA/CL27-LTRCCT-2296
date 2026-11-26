@@ -62,13 +62,13 @@ Your mission is to:
     >
     > - Form:
     >
-    >    !!! Note
-             The JSON code below represents a simple web form with three fields:
-
-             - **Full Name** [text]
-             - **Email** [text]
-             - **Request topic** [drop-down list]
-        
+        !!! Note
+            The JSON code below represents a simple web form with three fields:
+            
+            - **Full Name** [text]
+            - **Email** [text]
+            - **Request topic** [drop-down list]
+            
             In this lab, once the customer initiates the chat, this will trigger the flow and **Send Chat** node will show them the form and ask to fill in those three fields one-by-one.
     >
     >   ``` JSON
