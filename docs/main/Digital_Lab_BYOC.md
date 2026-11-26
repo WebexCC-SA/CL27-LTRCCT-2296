@@ -36,7 +36,7 @@ Your mission is to:
     !!! Note
         Please replace the following parameters in JSON body below before executing API request:
 
-        - **[Your Attendee ID]** - **<span class="attendee-id-placeholder">Your_Attendee_ID</span>**, so the full "name" value should be **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="-Event-Sub">Your_Attendee_ID</span>-Event-Sub<span class="copy" title="Click to copy!"></span></span>**
+        - **[Your Attendee ID]** - **<span class="attendee-id-placeholder">Your_Attendee_ID</span>**, hence the full "name" value should be **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="-Event-Sub">Your_Attendee_ID</span>-Event-Sub<span class="copy" title="Click to copy!"></span></span>**
         - **[Webhook URL from step 1]** - paste your Webhook URL
 
     ``` JSON
@@ -79,34 +79,34 @@ Your mission is to:
 
     Make sure your **event subscription** has been successfully registered, and you received **Response code - 201**.
     
-    > **<details><summary>Example of a JSON body for a successful API response for an Event Subscription</summary>**
+    > **<details><summary>Example of a JSON body for a successful API response for the Event Subscription</summary>**
     >
-        ``` JSON
-        {
-            "meta": {
-                "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
-                "subscriptionLimit": 20,
-                "subscriptionCount": 9
-            },
-            "data": {
-                "id": "d4a5713d-6b3f-45cc-b507-52ea15509da0",
-                "name": "133-Event-Sub",
-                "eventTypes": [
-                    "task:failed",
-                    "task:connected",
-                    "task:ended",
-                    "task:new"
-                ],
-                "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
-                "createdTime": 1795633055860,
-                "createdBy": "wxcclabs+admin_ID133@gmail.com",
-                "status": "active",
-                "lastUpdatedTime": 1795633055860,
-                "lastUpdatedBy": "wxcclabs+admin_ID133@gmail.com",
-                "resourceVersion": "task:1.0.0"
-            }
-        }
-        ```
+      ``` JSON
+      {
+          "meta": {
+              "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+              "subscriptionLimit": 20,
+              "subscriptionCount": 9
+          },
+          "data": {
+              "id": "d4a5713d-6b3f-45cc-b507-52ea15509da0",
+              "name": "133-Event-Sub",
+              "eventTypes": [
+                  "task:failed",
+                  "task:connected",
+                  "task:ended",
+                  "task:new"
+              ],
+              "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
+              "createdTime": 1795633055860,
+              "createdBy": "wxcclabs+admin_ID133@gmail.com",
+              "status": "active",
+              "lastUpdatedTime": 1795633055860,
+              "lastUpdatedBy": "wxcclabs+admin_ID133@gmail.com",
+              "resourceVersion": "task:1.0.0"
+          }
+      }
+      ```
     >
     > </details>
 
@@ -115,7 +115,7 @@ Your mission is to:
     !!! Note
         Please replace the following parameters in JSON body below before executing API request:
 
-        - **[Your Attendee ID]** - **<span id="display-attendee">No ID stored</span>**
+        - **[Your Attendee ID]** - **<span id="display-attendee">No ID stored</span>**, hence the full "name" value should be **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="-Event-Sub">Your_Attendee_ID</span>-Event-Sub<span class="copy" title="Click to copy!"></span></span>**
         - **[Webhook URL from step 1]** - paste your Webhook URL
 
     ``` JSON
@@ -132,48 +132,56 @@ Your mission is to:
     }
     ```
 
-    Here is the example of **message subscription** JSON body for attendee **133** and webhook URL **https://usewebhook.com/ac52e535e67c204214ab31283faecbc9**:
+    > **<details><summary>Example of an Event Subscription JSON body</summary>**
+    >
+    > Here is the example of **message subscription** JSON body for attendee **133** and webhook URL **https://usewebhook.com/ac52e535e67c204214ab31283faecbc9**:
+    >
+      ``` JSON
+      {
+          "name": "133-Message-Sub",
+          "eventTypes": [
+              "task-message:appended",
+              "task-message:append-failed"
+          ],
+          "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
+          "secret": "secret-string-to-sign-event-payloads",
+          "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+          "resourceVersion": "task-message:1.0.0"
+      }
+      ```
+    >
+    > </details>
 
-    ``` JSON
-    {
-        "name": "133-Message-Sub",
-        "eventTypes": [
-            "task-message:appended",
-            "task-message:append-failed"
-        ],
-        "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
-        "secret": "secret-string-to-sign-event-payloads",
-        "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
-        "resourceVersion": "task-message:1.0.0"
-    }
-    ```
-
-    Make sure your **message subscription** has been successfully registered. Here is the example of JSON body of successful API response (Response code - 201):
-
-    ``` JSON
-    {
-        "meta": {
-            "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
-            "subscriptionLimit": 20,
-            "subscriptionCount": 10
-        },
-        "data": {
-            "id": "a839417e-7766-47e3-929a-7ea994cd4781",
-            "name": "133-Message-Sub",
-            "eventTypes": [
-                "task-message:appended",
-                "task-message:append-failed"
-            ],
-            "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
-            "createdTime": 1795633733786,
-            "createdBy": "wxcclabs+admin_ID133@gmail.com",
-            "status": "active",
-            "lastUpdatedTime": 1795633733786,
-            "lastUpdatedBy": "wxcclabs+admin_ID133@gmail.com",
-            "resourceVersion": "task-message:1.0.0"
-        }
-    }
-    ```
+    Make sure your **message subscription** has been successfully registered, and you received **Response code - 201**.
+    
+    > **<details><summary>Example of a JSON body for a successful API response for the Message Subscription</summary>**
+    >
+      ``` JSON
+      {
+          "meta": {
+              "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+              "subscriptionLimit": 20,
+              "subscriptionCount": 10
+          },
+          "data": {
+              "id": "a839417e-7766-47e3-929a-7ea994cd4781",
+              "name": "133-Message-Sub",
+              "eventTypes": [
+                  "task-message:appended",
+                  "task-message:append-failed"
+              ],
+              "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
+              "createdTime": 1795633733786,
+              "createdBy": "wxcclabs+admin_ID133@gmail.com",
+              "status": "active",
+              "lastUpdatedTime": 1795633733786,
+              "lastUpdatedBy": "wxcclabs+admin_ID133@gmail.com",
+              "resourceVersion": "task-message:1.0.0"
+          }
+      }
+      ```
+    >
+    > </details>
 
 5. Open a new tab in your web browser and log in to [Collaboration Control Hub](https://admin.webex.com){:target="_blank"} by using your Admin profile. 
    Your login will be of the format **<span class="attendee-id-container">wxcclabs+admin_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+admin_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy" title="Click to copy!"></span></span>**.
