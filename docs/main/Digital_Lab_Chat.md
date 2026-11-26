@@ -61,7 +61,7 @@ Your mission is to:
     > - Message Type: **Form**
     >
     > - Form:
-    >
+    
         !!! Note
             The JSON code below represents a simple web form with three fields:
             
@@ -105,7 +105,7 @@ Your mission is to:
             ]
         }
         ```
-    >
+    
     > - Append message to transcript: **Enabled**
     
     - Connect **Start Chat** node output to this node.
