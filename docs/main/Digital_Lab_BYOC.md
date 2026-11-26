@@ -59,21 +59,21 @@ Your mission is to:
     >
     > Here is the example of **event subscription** JSON body for attendee **133** and webhook URL **https://usewebhook.com/ac52e535e67c204214ab31283faecbc9**:
     >
-        ``` JSON
-        {
-            "name": "133-Event-Sub",
-            "eventTypes": [
-                "task:new",
-                "task:failed",
-                "task:connected",
-                "task:ended"
-            ],
-            "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
-            "secret": "secret-string-to-sign-event-payloads",
-            "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
-            "resourceVersion": "task:1.0.0"
-        }
-        ```
+      ``` JSON
+      {
+          "name": "133-Event-Sub",
+          "eventTypes": [
+              "task:new",
+              "task:failed",
+              "task:connected",
+              "task:ended"
+          ],
+          "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
+          "secret": "secret-string-to-sign-event-payloads",
+          "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+          "resourceVersion": "task:1.0.0"
+      }
+      ```
     >
     > </details>
 
