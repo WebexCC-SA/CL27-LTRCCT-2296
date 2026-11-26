@@ -173,15 +173,15 @@ Your mission is to:
 
 7. Set the following parameters in the **Webhook** section of asset settings and save changes:
 
-    > - Messaging webhook URL: *[Webhook URL from step 1]*
+    > - Messaging webhook URL: **[Webhook URL from step 1]**
     >
-    > - Messaging webhook secret: *secret-string-to-sign-event-payloads*<span class="copy-static" title="Click to copy!" data-copy-text="secret-string-to-sign-event-payloads"><span class="copy"></span></span>
+    > - Messaging webhook secret: **secret-string-to-sign-event-payloads**<span class="copy-static" title="Click to copy!" data-copy-text="secret-string-to-sign-event-payloads"><span class="copy"></span></span>
 
 8. Navigate to **Flows** under **Customer Experience** section on the left, click on **Manage Flows** dropdown list on the top right and select **Create Flows**.
 
 9. New **Flow creation** tab will be opened. Select **Flow** and **Start from scratch** in that tab and press **Next**.
 
-10. On the **Flow confiduration** tab name your flow as <span class="attendee-id-container">**BYOC_Flow_<span class="attendee-id-placeholder" data-prefix="BYOC_Flow_">Your_Attendee_ID</span><span class="copy" title="Click to copy!"></span></span>** Then select **Custom-Messaging-BYOC** as a channel type and click on **Create Flow**. The new flow with the only **Start Flow** node on the flow canvas will be created.
+10. On the **Flow configuration** tab name your flow as <span class="attendee-id-container">**BYOC_Flow_<span class="attendee-id-placeholder" data-prefix="BYOC_Flow_">Your_Attendee_ID</span><span class="copy" title="Click to copy!"></span></span>** Then select **Common_BYOC_Channel** as a channel type and click on **Create Flow**. The new flow with the only **Start Flow** node on the flow canvas will be created.
 
     !!! Note
         - **Edit** toggle at the top center of the page should be turned on when you create a new flow. If the toggle is off, switch it to on.
@@ -189,18 +189,87 @@ Your mission is to:
 
 11.  Click on any empty point at the flow canvas to see **Global flow properties** tab on the right-hand side. Then go to that pane, scroll down to the **Configuration - Flow Variables** and create the following variables by pressing **Create flow variable** button:
 
-    > - **name**: Variable type - **String**, Agent viewable - **On**, Desktop label - **Customer name**
-    >
-    > - **topic**: Variable type - **String**, Agent viewable - **On**, Desktop label - **Brief description**
+    > - **order**: Variable type - **String**, Agent viewable - **On**, Desktop label - **Order number**
 
 12. Scroll down and turn on **Enable decryption** toggle on the same **Global flow properties** tab.
 
-13. Add **Send Chat** node from the **Activities** pane on the left to the main flow canvas and set the following node settings:
+13. Add **Send Custom Message** node from the **Activities** pane on the left to the main flow canvas and set the following node settings:
 
+    > - Activity label: **SendHello**
+    >
+    > **Channel details** section:
+    >
+    > - Custom messaging channel: **Common_BYOC_Channel**
+    > <br/><br/>
+    > **Message configuration** section:
+    >
+    > - Message type: **Text**
+    >
+    > - Message text: **Hello, Please provide your order number.**
+    >
+    > - Append message to transcript: **Enabled**
+    > <br/><br/>
+    > Connect **Start Flow** node output to this node.
 
+14. Add **Receive Message** node from the same **Activities** pane and set the following node settings:
 
+    > - Activity label: **ReceiveOrder**
+    >
+    > **Channel details** section:
+    >
+    > - Channel type: **Custom Messaging**
+    >
+    > - Channel: **Common_BYOC_Channel**
+    >
+    > - Wait before timing out: **600** seconds
+    >
+    > - Append message to transcript: **Enabled**
+    > <br/><br/>
+    >  **Parse settings** section (press **+ Add new** button to add a variable):
+    >
+    > - Flow variable: **order**
+    >
+    > - JSON path expression: **$.message.text**<span class="copy-static" data-copy-text="$.message.text"><span class="copy" title="Click to copy!"></span></span>
+    > <br/><br/>
+    > Connect **SendHello** node output to this node.
 
-13. Add **Queue Contact** node to the flow and configure it in the following way:
+15. Add one more **Send Custom Message** node to the flow and set the following node settings:
+
+    > - Activity label: **SendSuccessResponse**
+    > <br/><br/>
+    > **Channel details** section:
+    >
+    > - Custom messaging channel: **Common_BYOC_Channel**
+    > <br/><br/>
+    > **Message configuration** section:
+    >
+    > - Message type: **Text**
+    >
+    > - Message text: **Thank you for providing the information. We appreciate your patience. One of our agents will join the chat shortly to assist you.**<span class="copy-static" data-copy-text="Thank you for providing the information. We appreciate your patience. One of our agents will join the chat shortly to assist you."><span class="copy" title="Click to copy!"></span></span>
+    >
+    > - Append message to transcript: **Enabled**
+    > <br/><br/>
+    > Connect **ReceiveOrder** node output to this node.
+
+16. Add one more **Send Custom Message** node to the flow and set the following node settings:
+
+    > - Activity label: **SendErrorResponse**
+    > <br/><br/>
+    > **Channel details** section:
+    >
+    > - Custom messaging channel: **Common_BYOC_Channel**
+    > <br/><br/>
+    > **Message configuration** section:
+    >
+    > - Message type: **Text**
+    >
+    > - Message text: **It looks like an issue may have occurred during the chat. One of our agents will join shortly to investigate and assist you. Thank you for your patience.**<span class="copy-static" data-copy-text="It looks like an issue may have occurred during the chat. One of our agents will join shortly to investigate and assist you. Thank you for your patience."><span class="copy" title="Click to copy!"></span></span>
+    >
+    > - Append message to transcript: **Enabled**
+    > <br/><br/>
+    > Connect all **Timeout** and **Undefined Error** outputs of **SendHello** and **ReceiveOrder** nodes to this node.
+
+17. Add **Queue Contact** node to the flow and configure it in the following way:
 
     > - Channel type: **Custom messaging**
     >
@@ -210,12 +279,12 @@ Your mission is to:
     >
     >    !!! Note
              As mentioned in **Getting Started**, all queues have been preconfigured so you don't need to change them at this step.
-    >
-    > Connect **all** outputs of **SendResponse** node to this node.
+    > <br/><br/>
+    > Connect **all** outputs of **SendSuccessResponse** and **SendErrorResponse** nodes to this node.
 
-14. Add **End Flow** node and connect the output of **Queue Contact** node to this node.
+18. Add **End Flow** node and connect the output of **Queue Contact** node to this node.
 
-15. Validate and publish the flow:
+19. Validate and publish the flow:
 
     > - Enable the **Validation** toggle in the bottom right corner of the flow designer window to check for any potential flow errors and recommendations.
     >
@@ -223,9 +292,9 @@ Your mission is to:
     >
     > - In the pop-up window, ensure that the **Latest** label is selected in the **Add Version Label(s)** list, then click **Publish Flow**.
 
-16. Return to the **Contact Center** on Collaboration Control Hub. Go to **Entry Points**, search for your channel **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Channel">Your_Attendee_ID</span>_BYOC_Channel<span class="copy" title="Click to copy!"></span></span>** and click on it.
+20. Return to the **Contact Center** on Collaboration Control Hub. Go to **Entry Points**, search for your channel **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="_BYOC_Channel">Your_Attendee_ID</span>_BYOC_Channel<span class="copy" title="Click to copy!"></span></span>** and click on it.
 
-17. In **Entry Point** settings section change the following, then click **Save** button:
+21. In **Entry Point** settings section change the following, then click **Save** button:
 
     > - Chat routing flow: **BYOC_Flow_<span class="attendee-id-placeholder">Your_Attendee_ID</span>**
     >
@@ -244,7 +313,7 @@ Your mission is to:
         - Append message to the existing conversation on behalf of customer.
         In other words, we will use **Create Task API** to simulate custom channel interface on customer's side. Like, if the end customer would send those messages via Instagram, Telegram, LinkedIn or any other application.
 
-3. Firstly, let's initiate a new request on behalf of the end customer to trigger Webex CC flow we created above. Copy the JSON body below, paste it to **Request Body (JSON)** tab, scroll down and press **Run** button:
+3. Firstly, let's initiate a new request on behalf of the end customer to trigger Webex CC flow we created above. Copy the JSON body below, paste it to **Request Body (JSON)** tab, scroll down and press **Run** button. This will send a message **Hello, I need help with my order.** to Webex CC and call your flow. 
 
     !!! Note
         Please replace the following parameters in JSON body below before executing API request
@@ -271,13 +340,20 @@ Your mission is to:
                 "direction": "inbound",
                 "type": "text",
                 "text": "Hello, I need help with my order.",
-                "timestampEpoch": "[Current time in EPOCH format with milliseconds]"
+                "timestampEpoch": "[Current time in EPOCH format in milliseconds]"
             }
         }
     }
     ```    
 
-4. Now, let's append an existing conversation with the new message on behalf of the end customer to route it to the queue and engage an agent. In order to do this, navigate to [Append Task Message API](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/append-task-message){:target="_blank"} of **Webex Contact Center Developer Portal** and switch to **Request Body (JSON)** tab in the window on the right-hand side. Then copy the JSON body below, paste it to **Request Body (JSON)** tab, scroll down and press **Run** button:
+4. After your flow receives initial message, it will auto-reply with the message **Hello, Please provide your order number.** that we pre-configured creating the flow. Both messages will be sent to Webhook URL provided during subscription registration above. Therefore, switch to the Webhook website tab in your browser and make sure you see both messages there.
+
+5. Now, let's append an existing conversation with the new message on behalf of the end customer to route it to the queue and engage an agent. We will reply with the text **123456** as an order number.
+
+    !!! Note
+        In order to simplify lab task and flow logic, we do not make any verification within the flow whether provided value really matches order number format. However, this is a mandatory part of any BYOC implementation in production environment.
+
+    In order to do this, navigate to [Append Task Message API](https://developer.webex.com/webex-contact-center/docs/api/v1/tasks-call-control/append-task-message){:target="_blank"} of **Webex Contact Center Developer Portal** and switch to **Request Body (JSON)** tab in the window on the right-hand side. Then copy the JSON body below, paste it to **Request Body (JSON)** tab, scroll down and press **Run** button:
 
     !!! Note
         Please replace the following parameters in JSON body below before executing API request
@@ -292,16 +368,18 @@ Your mission is to:
             "message": {
                 "direction": "inbound",
                 "type": "text",
-                "text": "My order number is 123456.",
-                "timestampEpoch": "[Current time in EPOCH format with milliseconds]"
+                "text": "123456",
+                "timestampEpoch": "[Current time in EPOCH format in milliseconds]"
             }
         }
     }
     ```
 
-5. Switch to the agent desktop browser tab and accept incoming request.
+6. Switch to the Webhook website tab in your browser and make sure you see the appended messages with order number there.
 
-6. Send messages from the customer to the agent (via **Append Task Message API**) and vice versa (from the agent desktop) to make sure bidirectional message exchange works correctly. Then end the conversation in **agent desktop**, select any value from the **Wrap Up Reasons** dropdown list on the right-hand side, and press the **Submit Wrap Up** button.
+7. Switch to the agent desktop browser tab and accept incoming request.
+
+8. Send messages from the customer to the agent (via **Append Task Message API**) and vice versa (from the agent desktop) to make sure bidirectional message exchange works correctly. Make sure you see all those messages on the Webhook webpage. Then end the conversation in **agent desktop**, select any value from the **Wrap Up Reasons** dropdown list on the right-hand side, and press the **Submit Wrap Up** button.
 
 ---
-<p style="text-align:center"><strong>Congratulations, you have successfully completed Web Chat Channel mission! 🎉🎉 </strong></p>
+<p style="text-align:center"><strong>Congratulations, you have successfully completed Bring Your Own Channel mission! 🎉🎉 </strong></p>

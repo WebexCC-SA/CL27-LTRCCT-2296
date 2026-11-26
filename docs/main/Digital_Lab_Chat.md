@@ -160,7 +160,7 @@ Your mission is to:
     >
     > - Append message to transcript: **Enabled**
     >
-    > Connect **SendForm** node output to this node.
+    > Connect **Set Customer Identity** node output to this node.
 
 12. Add one more **Send Chat** node to the flow and set the following node settings:
 
