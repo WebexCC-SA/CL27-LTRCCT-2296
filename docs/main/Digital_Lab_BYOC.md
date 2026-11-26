@@ -36,7 +36,7 @@ Your mission is to:
     !!! Note
         Please replace the following parameters in JSON body below before executing API request:
 
-        - **[Your Attendee ID]** - **<span id="display-attendee">No ID stored</span>**
+        - **[Your Attendee ID]** - **<span class="attendee-id-placeholder">Your_Attendee_ID</span>**
         - **[Webhook URL from step 1]** - paste your Webhook URL
 
     ``` JSON
@@ -55,23 +55,27 @@ Your mission is to:
     }
     ```
     
-    Here is the example of **event subscription** JSON body for attendee **133** and webhook URL **https://usewebhook.com/ac52e535e67c204214ab31283faecbc9**:
-
-    ``` JSON
-    {
-        "name": "133-Event-Sub",
-        "eventTypes": [
-            "task:new",
-            "task:failed",
-            "task:connected",
-            "task:ended"
-        ],
-        "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
-        "secret": "secret-string-to-sign-event-payloads",
-        "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
-        "resourceVersion": "task:1.0.0"
-    }
-    ```
+    > **<details><summary>Example of **event subscription** JSON body</summary>**
+    >
+    > Here is the example of **event subscription** JSON body for attendee **133** and webhook URL **https://usewebhook.com/ac52e535e67c204214ab31283faecbc9**:
+    >
+        ``` JSON
+        {
+            "name": "133-Event-Sub",
+            "eventTypes": [
+                "task:new",
+                "task:failed",
+                "task:connected",
+                "task:ended"
+            ],
+            "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
+            "secret": "secret-string-to-sign-event-payloads",
+            "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+            "resourceVersion": "task:1.0.0"
+        }
+        ```
+    >
+    > </details>
 
     Make sure your **event subscription** has been successfully registered. Here is the example of JSON body of successful API response (Response code - 201):
 
@@ -195,7 +199,7 @@ Your mission is to:
 
 11.  Click on any empty point at the flow canvas to see **Global flow properties** tab on the right-hand side. Then go to that pane, scroll down to the **Configuration - Flow Variables** and create the following variables by pressing **Create flow variable** button:
 
-    > - **order**: Variable type - **String**, Agent viewable - **On**, Desktop label - **Order number**
+    > - Name - **order**, Variable type - **String**, Agent viewable - **On**, Desktop label - **Order number**
 
 12. Scroll down and turn on **Enable decryption** toggle on the same **Global flow properties** tab.
 

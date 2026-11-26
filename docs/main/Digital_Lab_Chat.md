@@ -123,7 +123,7 @@ Your mission is to:
     > - Wait before timing out: **180** seconds
     >
     > - Append message to transcript: **Enabled**
-    > <br/><br/>
+    >
     > **Parse settings** section (press **+ Add new** button to add a variable):
     >
     > - Flow variable: **name**
@@ -218,14 +218,14 @@ Your mission is to:
 
 4. Open a new tab in your web browser and navigate to a [**Website Template**](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro){:target="_blank"}.
 
-5. Paste the installation script you copied above between the paragraph closing HTML tag **'</p>'** and body closing tag **'</body>'** in the left window. Then press **Run >** button at the top of it and wait for a few seconds. Chat widget bubble will appear in the bottom right corner of the right window.
+5. Paste the installation script you copied above between the paragraph closing HTML tag **`</p>`** and body closing tag **`</body>`** in the left window. Then press **Run >** button at the top of it and wait for a few seconds. Chat widget bubble will appear in the bottom right corner of the right window.
 
     !!! Note
         If chat bubble did not appear, check and make sure the script is pasted to the proper place of the window on the left-hand side and press **Run >** button again. If this does not help, please ask lab proctor for assistance.
 
 6. Click on the chat bubble to open the widget and press **Start Chat** button there to initiate a chat.
 
-7. You should receive the web form asking you to provide Full Name, Email, and Request Topic (you need to select one of the pre-defined topics from the drop-down list) one-by-one.
+7. You should receive the web form asking you to provide **Full Name**, **Email**, and **Request Topic** (you need to select one of the pre-defined topics from the drop-down list) one-by-one.
 
     !!! Note
         - There is no need to provide your real name or email in the form. Feel free to enter fictitious data.
