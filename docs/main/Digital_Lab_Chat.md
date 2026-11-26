@@ -72,7 +72,7 @@ Your mission is to:
         In this lab, once the customer initiates the chat, this will trigger the flow and **Send Chat** node will show them the form and ask to fill in those three fields one-by-one.
     >
     >    ``` JSON
-        { 
+         { 
             "reference": "contact-request", 
             "title": "Please provide the details", 
             "fields": [ 
@@ -103,12 +103,12 @@ Your mission is to:
                     "mandatory": true 
                 } 
             ]
-        }
-    >   ```
+         }
+    >    ```
     >
     > - Append message to transcript: **Enabled**
-    
-    - Connect **Start Chat** node output to this node.
+    >
+    > Connect **Start Chat** node output to this node.
 
     !!! Note
         The JSON code above represents a simple web form with three fields:
@@ -133,7 +133,7 @@ Your mission is to:
     >
     > - Append message to transcript: **Enabled**
     > <br/><br/>
-    >  **Parse settings** section (press **+ Add new** button to add a variable):
+    > **Parse settings** section (press **+ Add new** button to add a variable):
     >
     > - Flow variable: **name**
     >
