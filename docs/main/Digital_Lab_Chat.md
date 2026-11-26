@@ -22,7 +22,7 @@ Your mission is to:
 2. Create a pre-chat form. </br>
 3. Test message exchange between the customer and the agent. </br>
 
-### Build
+## Build
 
 1. Log in to [Collaboration Control Hub](https://admin.webex.com){:target="_blank"} by using your Admin profile. 
    Your login will be of the format **<span class="attendee-id-container">wxcclabs+admin_ID<span class="attendee-id-placeholder" data-prefix="wxcclabs+admin_ID" data-suffix="@gmail.com">Your_Attendee_ID</span>@gmail.com<span class="copy" title="Click to copy!"></span></span>**. You will see another login screen with the Webex logo on it where you may need to enter the email address again and the password provided to you.
@@ -46,11 +46,11 @@ Your mission is to:
 
 6.  Click on any empty point at the flow canvas to see **Global flow properties** tab on the right-hand side. Then go to that pane, scroll down to the **Configuration - Flow Variables** and create the following variables by pressing **Create flow variable** button:
 
-    > - **name**: Variable type - **String**
+    > - Name - **name**, Variable type - **String**
     >
-    > - **email**: Variable type - **String**
+    > - Name - **email**, Variable type - **String**
     >
-    > - **topic**: Variable type - **String**
+    > - Name - **topic**, Variable type - **String**
 
 7. Scroll down and turn on **Enable decryption** toggle on the same **Global flow properties** tab.
 
@@ -102,9 +102,11 @@ Your mission is to:
 
     !!! Note
         The JSON code above represents a simple web form with three fields:
+
         - **Full Name** [text]
         - **Email** [text]
         - **Request topic** [drop-down list]
+        
         In this lab, once the customer initiates the chat, this will trigger the flow and **Send Chat** node will show them the form and ask to fill in those three fields one-by-one.
 
 9. Add **Receive Message** node from the same **Activities** pane and set the following node settings:
