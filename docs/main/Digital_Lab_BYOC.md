@@ -36,7 +36,7 @@ Your mission is to:
     !!! Note
         Please replace the following parameters in JSON body below before executing API request:
 
-        - **[Your Attendee ID]** - **<span class="attendee-id-placeholder">Your_Attendee_ID</span>**
+        - **[Your Attendee ID]** - **<span class="attendee-id-placeholder">Your_Attendee_ID</span>**, so the full "name" value should be **<span class="attendee-id-container"><span class="attendee-id-placeholder" data-suffix="-Event-Sub">Your_Attendee_ID</span>-Event-Sub<span class="copy" title="Click to copy!"></span></span>**
         - **[Webhook URL from step 1]** - paste your Webhook URL
 
     ``` JSON
@@ -55,7 +55,7 @@ Your mission is to:
     }
     ```
     
-    > **<details><summary>Example of **event subscription** JSON body</summary>**
+    > **<details><summary>Example of an Event Subscription JSON body</summary>**
     >
     > Here is the example of **event subscription** JSON body for attendee **133** and webhook URL **https://usewebhook.com/ac52e535e67c204214ab31283faecbc9**:
     >
@@ -77,34 +77,38 @@ Your mission is to:
     >
     > </details>
 
-    Make sure your **event subscription** has been successfully registered. Here is the example of JSON body of successful API response (Response code - 201):
-
-    ``` JSON
-    {
-        "meta": {
-            "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
-            "subscriptionLimit": 20,
-            "subscriptionCount": 9
-        },
-        "data": {
-            "id": "d4a5713d-6b3f-45cc-b507-52ea15509da0",
-            "name": "133-Event-Sub",
-            "eventTypes": [
-                "task:failed",
-                "task:connected",
-                "task:ended",
-                "task:new"
-            ],
-            "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
-            "createdTime": 1795633055860,
-            "createdBy": "wxcclabs+admin_ID133@gmail.com",
-            "status": "active",
-            "lastUpdatedTime": 1795633055860,
-            "lastUpdatedBy": "wxcclabs+admin_ID133@gmail.com",
-            "resourceVersion": "task:1.0.0"
+    Make sure your **event subscription** has been successfully registered, and you received **Response code - 201**.
+    
+    > **<details><summary>Example of a JSON body for a successful API response for an Event Subscription</summary>**
+    >
+        ``` JSON
+        {
+            "meta": {
+                "orgId": "e56f00d4-98d8-4b62-a165-d05a41243d98",
+                "subscriptionLimit": 20,
+                "subscriptionCount": 9
+            },
+            "data": {
+                "id": "d4a5713d-6b3f-45cc-b507-52ea15509da0",
+                "name": "133-Event-Sub",
+                "eventTypes": [
+                    "task:failed",
+                    "task:connected",
+                    "task:ended",
+                    "task:new"
+                ],
+                "destinationUrl": "https://usewebhook.com/ac52e535e67c204214ab31283faecbc9",
+                "createdTime": 1795633055860,
+                "createdBy": "wxcclabs+admin_ID133@gmail.com",
+                "status": "active",
+                "lastUpdatedTime": 1795633055860,
+                "lastUpdatedBy": "wxcclabs+admin_ID133@gmail.com",
+                "resourceVersion": "task:1.0.0"
+            }
         }
-    }
-    ```
+        ```
+    >
+    > </details>
 
 4. Let's now subscribe the same Webhook URL to receive Webex Contact Center **messages** via Subscriptions API. Go to the [Register Subscription](https://developer.webex.com/webex-contact-center/docs/api/v1/subscriptions/register-subscription){:target="_blank"} page again. Switch to **Request Body (JSON)** tab in the window on the right-hand side, then copy the JSON body below, paste it there, scroll down and press **Run** button: 
 
